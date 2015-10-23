@@ -76,16 +76,25 @@
     }
 }
 #pragma mark textfield delegate
--(BOOL) textFieldSHouldReturn:(UITextField *)textField{
+-(BOOL) textFieldShouldReturn:(UITextField *)textField{
     [textField resignFirstResponder];//dismiss keyboard when done edditing text field
+    NSLog(@"shouldreturn");
     return YES;
 }
 -(BOOL) textFieldShouldEndEditing:(UITextField *)textField{
-    
+    [textField resignFirstResponder];//dismiss keyboard when done edditing text field
+    NSLog(@"shouldend");
     return YES;
+    
+}
+
+-(void) touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    NSLog(@"touch begin");
+    [self.tf_email resignFirstResponder];
+    
 }
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
-    [textField becomeFirstResponder];
+    // have to remove , cause it automatically called [textField becomeFirstResponder];
     return YES;
 }
 
